@@ -88,7 +88,7 @@ class InferenceHelper:
 
     @torch.no_grad()
     def predict_pil(self, pil_image, visualized=False):
-        # pil_image = pil_image.resize((640, 480))
+        pil_image = pil_image.resize((640, 480))
         img = np.asarray(pil_image) / 255.
 
         img = self.toTensor(img).unsqueeze(0).float().to(self.device)
@@ -152,7 +152,7 @@ if __name__ == '__main__':
     import matplotlib.pyplot as plt
     from time import time
 
-    img = Image.open("test_imgs/classroom__rgb_00283.jpg")
+    img = Image.open("~/AdaBins/test_imgs/191223_125232_entry-ocrlpr_15880_empty.png")
     start = time()
     inferHelper = InferenceHelper()
     centers, pred = inferHelper.predict_pil(img)
