@@ -152,10 +152,11 @@ if __name__ == '__main__':
     import matplotlib.pyplot as plt
     from time import time
 
-    img = Image.open("~/AdaBins/test_imgs/191223_125232_entry-ocrlpr_15880_empty.png")
+    img = Image.open("test_imgs/191223_125232_entry-ocrlpr_15880_empty.png")
     start = time()
     inferHelper = InferenceHelper()
     centers, pred = inferHelper.predict_pil(img)
     print(f"took :{time() - start}s")
+    pred.squeeze().save("test_imgs/191223_125232_entry-ocrlpr_15880_empty_depth.png")
     plt.imshow(pred.squeeze(), cmap='magma_r')
     plt.show()
